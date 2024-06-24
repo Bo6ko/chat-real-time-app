@@ -1,0 +1,604 @@
+{
+	"info": {
+		"_postman_id": "7089ef58-7284-491c-81c3-7b30b2009a35",
+		"name": "my app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "products",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"barcode\": \"11123\",\r\n    \"name\": \"product name 3\",\r\n    \"price\": 10,\r\n    \"quantity\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:{{port}}/products",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "products",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"product namedddddd 3\",\r\n    \"price\": 10,\r\n    \"quantity\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:{{port}}/products/21",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"products",
+								"21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product get by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"name1\",\r\n    \"price\": \"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:{{port}}/products/4",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"products",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"name1\",\r\n    \"price\": \"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:{{port}}/products",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:{{port}}/products/15",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"products",
+								"15"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "products with form data",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "barcode",
+									"value": "11127",
+									"type": "default"
+								},
+								{
+									"key": "name",
+									"value": "test",
+									"contentType": "",
+									"description": "test",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "111",
+									"contentType": "",
+									"type": "default"
+								},
+								{
+									"key": "quantity",
+									"value": "10",
+									"type": "default"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Bozhidar/OneDrive/Работен плот/341167025_942425670136295_7033434238579312005_n.jpg"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:{{port}}/products",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "products with form data",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "barcode",
+									"value": "11125",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "test122",
+									"contentType": "",
+									"description": "test",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "111",
+									"contentType": "",
+									"type": "default"
+								},
+								{
+									"key": "quantity",
+									"value": "10",
+									"type": "default"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Bozhidar/OneDrive/Работен плот/341167025_942425670136295_7033434238579312005_n.jpg"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:{{port}}/products",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"name 1\",\r\n    \"last_name\": \"last name 1\",\r\n    \"email\": \"test2@test.com\",\r\n    \"password\": \"test\",\r\n    \"role\": \"basic\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:{{port}}/users/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test1@test.com\",\r\n    \"password\": \"test\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:{{port}}/users/login",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3000/users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_token\": \"W7wh4BVIe6SpMzxZfzIcR2YbsSvEDt1aN69CAcmg\",\r\n    \"owner_name\": \"name 1\",\r\n    \"sum\": 3\r\n}"
+						},
+						"url": {
+							"raw": "localhost:{{port}}/users",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3000/users",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"name 1\",\r\n    \"last_name\": \"last name 1\",\r\n    \"email\": \"test2@test.com\",\r\n    \"password\": \"test\",\r\n    \"role\": \"basic\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:{{port}}/users/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:{{port}}/users/3",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "localhost:3000/orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:{{port}}/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3000/orders by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:{{port}}/orders/2",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"orders",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3000/orders",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product\": {\r\n        \"id\": 1,\r\n        \"order\": {\r\n            \"product_id\": 1,\r\n            \"quantity\": 10\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:{{port}}/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3000/orders",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product\": {\r\n        \"id\": 1,\r\n        \"order\": {\r\n            \"id\": 5,\r\n            \"product_id\": 1,\r\n            \"quantity\": 20\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:{{port}}/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 3,\r\n    \"name\": \"name1\",\r\n    \"price\": \"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:{{port}}/orders/4",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"orders",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0MUB0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4OTA3ODE3MCwiZXhwIjoxNjg5MDgxNzcwfQ.BBzovLUlyPWPuQEaKfvCkAqdH3ojD_3qrJ-hJDOjbGE",
+			"type": "default"
+		},
+		{
+			"key": "port",
+			"value": "3001",
+			"type": "default"
+		}
+	]
+}

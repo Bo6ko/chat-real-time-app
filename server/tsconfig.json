@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "ES2020"],
+    "target": "es2020",
+    "module": "ESNext",
+    "noPropertyAccessFromIndexSignature": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "noFallthroughCasesInSwitch": true,
+    "outDir": "./dist",
+    "noEmitOnError": true,
+    "declaration": false,
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "checkJs": false,
+  },
+  "include": ["src/**/*", "database/*", "server.ts"],
+  "exclude": ["node_modules"]
+}
