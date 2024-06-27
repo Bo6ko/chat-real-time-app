@@ -27,8 +27,8 @@ const User: any = {
                 callback('User already exists');
                 return;
             }
-            const insertUserQuery = `INSERT INTO ${TABLE} (first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, ?)`;
-            db.query(insertUserQuery, [user.first_name, user.last_name, user.email, user.password, user.role], (error, results) => {
+            const insertUserQuery = `INSERT INTO ${TABLE} (first_name, last_name, email, password) VALUES (?, ?, ?, ?)`;
+            db.query(insertUserQuery, [user.first_name, user.last_name, user.email, user.password], (error, results) => {
                 if (error) {
                     callback(error);
                     return;
