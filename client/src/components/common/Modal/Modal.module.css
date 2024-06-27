@@ -1,0 +1,79 @@
+.alert-dialog__trigger {
+  appearance: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: auto;
+  outline: none;
+  border-radius: 6px;
+  padding: 0 16px;
+  background-color: hsl(200 98% 39%);
+  color: white;
+  font-size: 16px;
+  line-height: 0;
+  transition: background-color;
+}
+.alert-dialog__trigger:hover {
+  background-color: hsl(201 96% 32%);
+}
+.alert-dialog__trigger:focus-visible {
+  outline: 2px solid hsl(200 98% 39%);
+  outline-offset: 2px;
+}
+.alert-dialog__trigger:active {
+  background-color: hsl(201 90% 27%);
+}
+.alert-dialog__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background-color: rgb(0 0 0 / 0.2);
+  display: non;
+}
+.alert-dialog__overlay[data-expanded] {
+  display: block;
+}
+.alert-dialog__positioner {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.alert-dialog__content {
+  z-index: 50;
+  max-width: min(calc(100vw - 16px), 500px);
+  border: 1px solid hsl(240 5% 84%);
+  border-radius: 6px;
+  padding: 2rem 2rem 1.125rem;
+  background-color: white;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  display: none;
+  position: relative;
+  word-break: break-word;
+}
+.alert-dialog__content[data-expanded] {
+  display: block;
+}
+.alert-dialog__close-button {
+  color: #938F94;
+  border: unset;
+  background-color: unset;
+  position: absolute;
+  right: 1.3rem;
+  top: 0.5rem;
+  cursor: pointer;
+}
+.alert-dialog__close-button svg {
+  width: 30px;
+  height: 30px;
+}
+.alert-dialog__title {
+  color: #313033;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}

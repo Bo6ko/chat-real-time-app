@@ -1,0 +1,56 @@
+@font-face{
+  font-family:'Montserrat';
+  font-style:normal;
+  src:local('Montserrat-Regular'),
+  url(../public/fonts/Montserrat-Regular.ttf) format('truetype');
+}
+
+@font-face{
+  font-family:'Open Sans';
+  font-style:normal;
+  src:local('Open-sans'),
+  url(../public/fonts/OpenSans-Regular.ttf) format('truetype');
+}
+
+h1 {
+  font-size: 60px;
+}
+h2 {
+  font-size: 32px;
+}
+h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 20px 0;
+}
+h4 {
+  font-size: 24px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', 'Open Sans', sans-serif;
+}
+
+.container {
+  max-width: 1600px;
+  /* width: 1600px; */
+  margin: 0 auto;
+}
+
+.clear {
+  clear: both;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+a:hover {
+  color: #47c9e5;
+  transition: all 0.3s ease-in-out;
+}
+
+p {
+  margin: 8px 0;
+}

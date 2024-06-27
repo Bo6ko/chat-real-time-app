@@ -1,0 +1,63 @@
+.root {
+  margin-bottom: 1rem;
+  position: relative;
+  border: 1px solid #CAC5CA;
+  border-radius: 1.5rem;
+  user-select: none;
+}
+
+.input {
+  appearance: textfield;
+  border: unset;
+  display: block;
+  text-align: center;
+  padding: 0.4rem 0;
+  font-size: 1.5rem;
+  width: 65%;
+  margin: auto;
+  
+  &:focus-visible {
+    outline: 0;
+  }
+}
+
+.input::-webkit-inner-spin-button,
+.input::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.buttons {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #CAC5CA;
+  border-radius: 50%;
+  color: #3556e0;
+  text-align: center;
+  /* font-weight: bold; */
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.buttons:hover {
+  background-color: #6b83e9;
+  color: #fff;
+  transition: 0.5s all;
+}
+
+.buttons.minus {
+  left: 10px;
+  line-height: 1;
+}
+
+.buttons.plus {
+  right: 10px;
+  line-height: 1.1;
+}

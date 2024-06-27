@@ -1,0 +1,65 @@
+/* https://webdeasy.de/en/top-css-buttons-en/ */
+
+.root {
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  outline: none;
+  font-size: 0.9rem;
+  line-height: 0;
+  border-radius: 2rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  transition-duration: 0.5s;
+  height: 2.1rem;
+  width: 100%;
+  font-weight: 700;
+}
+
+.root[data-disabled] {
+  pointer-events: none;
+}
+
+.root:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: -1px;
+  top: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  transition: opacity .3s ease-in-out;
+  background: #69A969;
+  border-radius: 2rem;
+}
+
+.root:hover {
+  box-shadow: 0px 0px 7px #69A969;
+  color: #69A969;
+}
+
+.root:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 2rem;
+}
+
+.root:active:after {
+  box-shadow: inset 5px 5px 5px 0px rgba(133,133,133,1);
+}
+
+.root:active,
+.root:active:after,
+.selected:after,
+.root.selected {
+  background: #69A969;
+  color: #fff;
+}
