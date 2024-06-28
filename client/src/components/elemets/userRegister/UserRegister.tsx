@@ -1,10 +1,10 @@
-import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 import Modal from 'react-modal';
 import css from './UserRegister.module.css';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 
 // TO DO this paths
-import { setUsers } from '../../../redux/actions/userActions';
+// import { setUsers } from '../../../redux/actions/userActions';
 import UserRegisterValidation from './UserRegisterValidation';
 import { User, UserValidation } from '../../../types/Users';
 import { signup } from '../../../services/users';
@@ -22,7 +22,7 @@ Modal.setAppElement('#root');
 
 const UserRegister = () => {
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const [user, setUser] = useState<User>(userInitialState);
     const [userErrors, setUserErrors] = useState<UserValidation>({
@@ -30,15 +30,6 @@ const UserRegister = () => {
         response: userInitialState
     });
     const [openUserRegisterModal, setOpenUserRegisterModal] = useState(false);
-
-    useEffect(() => {
-        console.log('222222')
-        if (openUserRegisterModal) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
-    }, [openUserRegisterModal]);
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const target = event.target;
@@ -50,7 +41,7 @@ const UserRegister = () => {
         });
     };
 
-    const createUserRegistration = (e: FormEvent) => {
+    const onClickSignup = (e: FormEvent) => {
         e.preventDefault();
         const validation = UserRegisterValidation(user);
         setUserErrors(validation);
@@ -69,7 +60,7 @@ const UserRegister = () => {
 
             {openUserRegisterModal && 
                 <Modal isOpen={openUserRegisterModal} onRequestClose={() => setOpenUserRegisterModal(false)}>
-                    <form onSubmit={createUserRegistration}>
+                    <form onSubmit={onClickSignup}>
                         <h2>User Register form</h2>
                         <input
                             type="text"
