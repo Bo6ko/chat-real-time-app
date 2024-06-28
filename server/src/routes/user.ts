@@ -5,7 +5,7 @@ import role from '../middleware/user-role.js';
 
 import UserController from '../controllers/user.js'
 
-router.get('/', UserController.getAll);
+router.get('/', checkAuth, UserController.getAll);
 
 router.post('/signup', UserController.signup);
 
