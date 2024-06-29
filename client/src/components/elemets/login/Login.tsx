@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import Modal from 'react-modal';
 import css from './Login.module.css';
 // import { useDispatch } from 'react-redux';
@@ -25,43 +25,57 @@ const Login = () => {
 
     // const dispatch = useDispatch();
 
-    const [user, setUser] = useState<LoginData>(loginDataInitial);
+    const [loginData, setLoginData] = useState<LoginData>(loginDataInitial);
     const [loginDataErrors, setLoginDataErrors] = useState<LoginValidationType>({
         isValid: false,
         response: loginDataInitial
     });
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [isUserLogin, setIsUserLogin] = useState<boolean>(localStorage.getItem("token") ? true : false);
+
+    useEffect(() => {
+        console.log(isUserLogin)
+    }, [isUserLogin])
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
-        setUser({
-            ...user, [name]: value
+        setLoginData({
+            ...loginData, [name]: value
         });
     };
 
     const onClickLogin = (e: FormEvent) => {
         e.preventDefault();
-        const validation = LoginValidation(user);
+        const validation = LoginValidation(loginData);
         setLoginDataErrors(validation);
         if (!validation.isValid) {
             return
         }
 
-        login(user, setIsModalOpen(false));
+        login(loginData, setIsModalOpen(false));
     };
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        setIsUserLogin(false)
+    }
 
     return (
         <>
-            <Button variant="contained" onClick={() => setIsModalOpen(true)}>
-                Login 
-            </Button>
+            { !isUserLogin &&
+                <Button variant="contained" onClick={() => setIsModalOpen(true)}>
+                    Login 
+                </Button>
+            }
 
-            <Button variant="contained" onClick={() => localStorage.removeItem("token")}>
-                Logout
-            </Button>
+            { isUserLogin &&
+                <Button variant="contained" onClick={logout}>
+                    Logout
+                </Button>
+            }
 
             {isModalOpen && 
                 <Modal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)}>
@@ -69,7 +83,7 @@ const Login = () => {
                         <input
                             type="text"
                             name="email"
-                            value={user.email}
+                            value={loginData.email}
                             onChange={handleInputChange}
                             placeholder="Enter User email"
                         />
@@ -79,7 +93,7 @@ const Login = () => {
                         <input
                             type="text"
                             name="password"
-                            value={user.password}
+                            value={loginData.password}
                             onChange={handleInputChange}
                             placeholder="Enter User password"
                         />
