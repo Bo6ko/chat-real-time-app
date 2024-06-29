@@ -25,6 +25,7 @@ export const login = (user: LoginData, cb: any) => {
     .then((result) => {
         console.log('11111111', result.data)
         localStorage.setItem("token", result.data.token);
+        return result.data;
         // users.push(result.data);
         // cb();
         // dispatch(setUsers(users));

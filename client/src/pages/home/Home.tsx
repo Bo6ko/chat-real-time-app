@@ -8,7 +8,9 @@ import { useEffect } from 'react';
 const Home = () => {
 
   useEffect(() => {
-    getAllUsers();
+    if ( localStorage.getItem("token") ) {
+      getAllUsers();
+    }
   }, []);
 
   return (
