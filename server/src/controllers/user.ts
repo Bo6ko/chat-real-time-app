@@ -6,9 +6,6 @@ import { MysqlError } from 'mysql';
 import User from '../models/user.js';
 
 const getAll = (req: Request, res: Response, next: NextFunction) => {
-
-    console.log('222222222223333333')
-
     User.getAll((err: MysqlError, results: any) => {
         if(err) {
             console.log('Error retrieving users:', err);

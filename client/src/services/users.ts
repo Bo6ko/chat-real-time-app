@@ -23,7 +23,6 @@ export const signup = (user: User, cb: any) => {
 export const login = (user: LoginData, cb: any) => {
     axios.post(`${apiUrl}users/login`, user)
     .then((result) => {
-        console.log('11111111', result.data)
         localStorage.setItem("token", result.data.token);
         return result.data;
         // users.push(result.data);
