@@ -6,7 +6,7 @@
   "main": "dist/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./dist/server.js",
+    "start": "nodemon --exec \"node --openssl-legacy-provider\" ./dist/server.js",
     "database:create": "node ./dist/database/create_database.js",
     "database:migration": "node ./dist/database/migrate_database.js",
     "build": "tsc -p tsconfig.json"
