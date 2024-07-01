@@ -1,13 +1,19 @@
-import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 import Modal from 'react-modal';
-import css from './Login.module.css';
+import css from './LoginModal.module.css';
 // import { useDispatch } from 'react-redux';
 
 // TO DO this paths
 // import { setUsers } from '../../../redux/actions/userActions';
-import LoginValidation, { LoginValidationType } from './LoginValidation';
-import { login } from '../../../services/users';
+import LoginValidation, { LoginValidationType } from './LoginModalValidation';
 import { Button } from '@mui/material';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setLoggedUser } from '../../../redux/actions/userActions';
+import { User } from '../../../types/Users';
+import { jwtDecode } from 'jwt-decode';
+
+const apiUrl = process.env.REACT_APP_API_URL;
 
 type LoginData = {
     email: string,
@@ -23,7 +29,7 @@ Modal.setAppElement('#root');
 
 const Login = () => {
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     const [loginData, setLoginData] = useState<LoginData>(loginDataInitial);
     const [loginDataErrors, setLoginDataErrors] = useState<LoginValidationType>({
@@ -32,10 +38,6 @@ const Login = () => {
     });
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [isUserLogin, setIsUserLogin] = useState<boolean>(localStorage.getItem("token") ? true : false);
-
-    useEffect(() => {
-        console.log(isUserLogin)
-    }, [isUserLogin])
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const target = event.target;
@@ -55,16 +57,35 @@ const Login = () => {
             return
         }
 
-        login(loginData, setIsModalOpen(false));
+        // login(loginData, setIsModalOpen(false));
+        axios.post(`${apiUrl}users/login`, loginData)
+        .then((result) => {
+            localStorage.setItem("token", result.data.token);
+
+            // this make reactivity for some reason because I think I make change to global state. Yes I never use
+            // this state to get logged user from global state but because the change home component is reactivity
+            const decodedUser = jwtDecode<User>(result.data.token);
+            dispatch(setLoggedUser(decodedUser));
+            setIsUserLogin(true);
+            setIsModalOpen(false);
+
+            return result.data;
+            // users.push(result.data);
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     };
 
     const logout = () => {
         localStorage.removeItem("token");
+        dispatch(setLoggedUser(null));
         setIsUserLogin(false)
     }
 
     return (
         <>
+            {/* TO DO - the logic is not good */}
             { !isUserLogin &&
                 <Button variant="contained" onClick={() => setIsModalOpen(true)}>
                     Login 
