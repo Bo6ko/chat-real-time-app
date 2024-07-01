@@ -64,6 +64,8 @@ const login = (req: Request, res: Response, next: NextFunction) => {
                     const token = jwt.sign(
                         {
                             id: results[0].id,
+                            first_name: results[0].first_name,
+                            last_name: results[0].last_name,
                             email: results[0].email,                            
                             role: results[0].role
                         }, 
@@ -72,9 +74,10 @@ const login = (req: Request, res: Response, next: NextFunction) => {
                             expiresIn: "1h"
                         }
                     );
+                    delete results[0].password;
                     return res.status(200).json({
                         message: 'Auth successful',
-                        token: token
+                        token: token,
                     })
                 }
                 return res.status(200).json({

@@ -7,6 +7,13 @@ export const setUsers = (users) => {
     }
 }
 
+export const setLoggedUser = (user) => {
+    return {
+        type: ActionTypes.SET_LOGGED_USER,
+        payload: user
+    }
+}
+
 export const setSelectedUser = (user) => {
     return {
         type: ActionTypes.SELECTED_USER,

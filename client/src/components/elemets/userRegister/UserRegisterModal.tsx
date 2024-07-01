@@ -1,11 +1,11 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
 import Modal from 'react-modal';
-import css from './UserRegister.module.css';
+import css from './UserRegisterModal.module.css';
 // import { useDispatch } from 'react-redux';
 
 // TO DO this paths
 // import { setUsers } from '../../../redux/actions/userActions';
-import UserRegisterValidation from './UserRegisterValidation';
+import UserRegisterValidation from './UserRegisterModalValidation';
 import { User, UserValidation } from '../../../types/Users';
 import { signup } from '../../../services/users';
 import { Button } from '@mui/material';
