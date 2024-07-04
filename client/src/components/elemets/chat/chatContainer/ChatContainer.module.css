@@ -1,0 +1,24 @@
+.chatRow {
+    margin: 10px 0;
+}
+
+.senderRow {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.senderCol {
+    background-color: lightgreen;
+    padding: 5px 20px;
+    border-radius: 10px;
+}
+
+.receiperRow {
+    display: flex;
+}
+
+.receiperCol {
+    background-color: lightblue;
+    padding: 5px 20px;
+    border-radius: 10px;
+}
