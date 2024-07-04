@@ -74,7 +74,6 @@ const login = (req: Request, res: Response, next: NextFunction) => {
                             expiresIn: "1h"
                         }
                     );
-                    delete results[0].password;
                     return res.status(200).json({
                         message: 'Auth successful',
                         token: token,

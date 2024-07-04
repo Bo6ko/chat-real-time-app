@@ -6,16 +6,13 @@ import useFetchUser from '../../hooks/users/useFetchUser';
 import { User } from '../../types/Users';
 import { LoggedUser } from '../../utils/utils';
 import { useEffect, useState } from 'react';
+import Chat from '../../components/elemets/chat/ChatModal';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
 const Home = () => {
   const users = useFetchUser(`${apiUrl}users`);
   const user = LoggedUser();
-
-  const onClickChat = () => {
-    console.log('chat open')
-  }
   
   return (
     <div className='container'>
@@ -45,7 +42,7 @@ const Home = () => {
                 userItem.email !== user.email &&
                 <div key={index} className={css.chatbox}>
                   <h3>{userItem.email}</h3>
-                  <button onClick={onClickChat}>chat</button>
+                  <Chat receiper={userItem} />
                 </div>
               ))
             }
