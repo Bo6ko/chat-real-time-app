@@ -1,50 +1,27 @@
 import db from '../../database/db_connection.js';
-const TABLE = 'users';
+const TABLE = 'chat';
 
-interface User {
-    id: string,
-    first_name: string,
-    last_name: string,
-    email: string,
-    password: string,
-    role: string
+interface Chat {
+    chat_room_id: string,
+    user_id: number,
+    message: string,
 }
 
-const User: any = {
+const Chat: any = {
     getAll: (callback: any) => {
-        const sql = `select * from ${TABLE}`;
+        const sql = `select c.chat_room_id, c.message, u.id, u.email from ${TABLE} as c join users as u ON u.id = c.user_id order by c.created_at`;
         db.query(sql, callback);
     },
-    signup: (user: User, callback: any) => {
-        const checkUserQuery = `SELECT * FROM ${TABLE} WHERE email = ?`;
-        db.query(checkUserQuery, [user.email], (error, results) => {
+    create: (chat: Chat) => {
+        const insertChatQuery = `INSERT INTO ${TABLE} (chat_room_id, user_id, message) VALUES (?, ?, ?)`;
+        db.query(insertChatQuery, [chat.chat_room_id, chat.user_id, chat.message], (error, results) => {
             if (error) {
-                callback(error);
+                console.log(error);
                 return;
             }
-            if (results.length > 0) {
-                // User with the same username or email already exists
-                callback('User already exists');
-                return;
-            }
-            const insertUserQuery = `INSERT INTO ${TABLE} (first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, ?)`;
-            db.query(insertUserQuery, [user.first_name, user.last_name, user.email, user.password, user.role], (error, results) => {
-                if (error) {
-                    callback(error);
-                    return;
-                }
-                callback(null, results.insertId);
-            });
+            console.log(results);
         });
-    },
-    login: (user: User, callback: any) => {
-        const findUser = `SELECT * FROM ${TABLE} WHERE email = ?`;
-        db.query(findUser, [user.email], callback);
-    },
-    delete: (user: User, callback: any) => {
-        const deleteUser = `DELETE FROM ${TABLE} WHERE id = ?;`;
-        db.query(deleteUser, [user.id], callback(null, {message: `User id ${user.id} was deleted!`}));
     },
 }
 
-export default User;
+export default Chat;

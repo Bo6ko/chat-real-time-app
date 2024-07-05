@@ -5,7 +5,7 @@ import css from './ChatContainer.module.css';
 type ChatData = {
     room?: string,
     message: string,
-    user?: User | undefined
+    email?: string
 }
 
 type Props = {
@@ -20,7 +20,7 @@ const ChatContainer = ({chats, receiper}: Props) => {
         return (
             <div className={css.senderRow}>
                 <span className={css.senderCol}>
-                    {chat.user?.email}<br />
+                    {chat.email}<br />
                     {chat.message}
                 </span>
             </div>
@@ -31,7 +31,7 @@ const ChatContainer = ({chats, receiper}: Props) => {
         return (
             <div className={css.receiperRow}>
                 <span className={css.receiperCol}>
-                    {chat.user?.email}<br />
+                    {receiper.email}<br />
                     {chat.message}
                 </span>
             </div>
@@ -45,7 +45,7 @@ const ChatContainer = ({chats, receiper}: Props) => {
                     chats.map((chat, index) => (
                         <div key={index} className={css.chatRow}>
                             {
-                                user?.email === chat.user?.email ? ReceiperChat(chat) : SenderChat(chat)
+                                user?.email !== chat?.email ? ReceiperChat(chat) : SenderChat(chat)
                             }
                         </div>
                     ))
