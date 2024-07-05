@@ -12,8 +12,8 @@ const ChatRoom: any = {
         db.query(sql, callback);
     },
     create: (chatRoom: ChatRoom, callback: any) => {
-        const checkChatRoomQuery = `SELECT * FROM chat_room WHERE sender_id = ? and receiper_id = ?`;
-        db.query(checkChatRoomQuery, [chatRoom.sender_id, chatRoom.receiper_id], (error, results) => {
+        const checkChatRoomQuery = `SELECT * FROM chat_room WHERE (sender_id = ? and receiper_id = ?) or (receiper_id = ? and sender_id = ?)`;
+        db.query(checkChatRoomQuery, [chatRoom.sender_id, chatRoom.receiper_id, chatRoom.sender_id, chatRoom.receiper_id], (error, results) => {
             if (error) {
                 callback(error);
                 return;

@@ -9,7 +9,8 @@ import ChatContainer from './chatContainer/ChatContainer';
 const apiUrl = process.env.REACT_APP_API_URL;
 
 type ChatData = {
-    room?: string,
+    user_id?: number,
+    chat_room_id?: string,
     message: string,
     user?: User | undefined
 }
@@ -19,7 +20,8 @@ type Props = {
 }
 
 const chatDataInitial: ChatData = {
-    room: '1',
+    user_id: 1,
+    chat_room_id: '1',
     message: '',
     user: undefined
 }
@@ -47,6 +49,15 @@ const Chat = ({receiper}: Props) => {
 
             newSocket.emit("join_room", user?.id, receiper.id);
 
+            newSocket.on('room_chat_id', (chat_room_id: any) => {
+                setChatData(prevChatData => ({ ...prevChatData, chat_room_id: chat_room_id }));
+            });
+
+            newSocket.on('room_created', (chat: ChatData[]) => {
+                setChats(prevChats => [...prevChats, ...chat]);
+                console.log('Joined in chat:', chat);
+            });
+
             newSocket.on('receive_message', (message: string) => {
                 setChats(prevChats => [...prevChats, {message, user: receiper}]);
                 console.log(message);
@@ -66,9 +77,9 @@ const Chat = ({receiper}: Props) => {
     const onClickSend = (e: FormEvent) => {
         e.preventDefault();
         if (chatData.message !== '') {
-            // TO DO: Create chat message
+            chatData.user_id = user?.id;
             socket?.emit("send_message", chatData);
-            setChats(prevChats => [...prevChats, {message: chatData.message, user: user ? user : undefined }]);
+            setChats(prevChats => [...prevChats, { message: chatData.message, email: user?.email }]);
             setChatData({ ...chatData, message: '' }); // Clear the message input
         }
     };
